@@ -1,24 +1,15 @@
 fileFormatVersion: 2
-guid: f7995f51d73f24e43b0189c26aaae4ee
-timeCreated: 1500901903
+guid: 70b58f411bc5e3046b1e37d656e2dd96
+timeCreated: 1500893080
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: FloodLight
-    100004: FloodLightHolder
     400000: //RootNode
-    400002: FloodLight
-    400004: FloodLightHolder
     2300000: //RootNode
-    2300002: FloodLight
-    2300004: FloodLightHolder
     3300000: //RootNode
-    3300002: FloodLight
-    3300004: FloodLightHolder
-    4300000: FloodLight
-    4300002: FloodLightHolder
+    4300000: WeaponCrateSmall
     9500000: //RootNode
   materials:
     importMaterials: 1
