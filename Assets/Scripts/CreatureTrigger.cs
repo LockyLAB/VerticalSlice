@@ -26,8 +26,6 @@ public class CreatureTrigger : MonoBehaviour {
 
 	void OnTriggerExit(){
 		pc.walkSpeed = 0.08f;
-		animator.SetTrigger ("PathTreeFalling");
-		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolumeLevel);
 		Destroy (this.gameObject);
 	}
 
@@ -35,6 +33,10 @@ public class CreatureTrigger : MonoBehaviour {
 		AudioSource.PlayClipAtPoint (creatureSound, transform.position, creatureVolumeLevel);
 		yield return new WaitForSeconds (1f);
 		AudioSource.PlayClipAtPoint (heavyBreathing, transform.position, breathingVolumeLevel);
+		yield return new WaitForSeconds (1f);
+		animator.SetTrigger ("PathTreeFalling");
+		yield return new WaitForSeconds (0.2f);
+		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolumeLevel);
 	}
 
 
