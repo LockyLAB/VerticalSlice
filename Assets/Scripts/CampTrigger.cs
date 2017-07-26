@@ -21,7 +21,7 @@ public class CampTrigger : MonoBehaviour {
 	public Animator animator2;
 	public Animator animator3;
 	public Animator animator4;
-	public Animator animator5;
+	//public Animator animator5;*/
 
 	public GameObject birds;
 
@@ -52,12 +52,13 @@ public class CampTrigger : MonoBehaviour {
 		animator3.SetTrigger ("TreeFalling3");
 		yield return new WaitForSeconds (secondsToWaitAnimations);
 		animator4.SetTrigger ("TreeFalling4");
-		yield return new WaitForSeconds (secondsToWaitAnimations);
-		animator5.SetTrigger ("TreeFalling5");
+//		yield return new WaitForSeconds (secondsToWaitAnimations);
+//		animator5.SetTrigger ("TreeFalling5");
 
 	}
 
 	private IEnumerator Sounds(){
+		yield return new WaitForSeconds (1.5f);
 		AudioSource.PlayClipAtPoint (creatureGrowl, transform.position, creatureGrowlVolume);
 		yield return new WaitForSeconds (secondsToWaitCreatureSounds);
 		AudioSource.PlayClipAtPoint (heavyBreathingQuick, transform.position, heavyBreathingQuickVolume);
@@ -72,12 +73,8 @@ public class CampTrigger : MonoBehaviour {
 		yield return new WaitForSeconds (secondsToWaitTreeSounds);
 		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
 		yield return new WaitForSeconds (secondsToWaitTreeSounds);
-		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
-		yield return new WaitForSeconds (secondsToWaitTreeSounds);
+//		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
+//		yield return new WaitForSeconds (secondsToWaitTreeSounds);
 
-	}
-	// Update is called once per frame
-	void Update () {
-		
 	}
 }

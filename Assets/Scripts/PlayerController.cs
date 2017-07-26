@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 	void Awake () 
 	{
 		isWalking = true;
+		notWalking = true;
 		GetComponent<Rigidbody>().freezeRotation = true;
 		GetComponent<Rigidbody>().useGravity = true;
 

@@ -35,6 +35,7 @@ public class CreatureTrigger : MonoBehaviour {
 		AudioSource.PlayClipAtPoint (creatureSound, transform.position, creatureVolumeLevel);
 		yield return new WaitForSeconds (1f);
 		AudioSource.PlayClipAtPoint (heavyBreathing, transform.position, breathingVolumeLevel);
+		yield return new WaitForSeconds (0.5f);
 
 	}
 

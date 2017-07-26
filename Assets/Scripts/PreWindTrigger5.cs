@@ -19,13 +19,14 @@ public class PreWindTrigger5 : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(){
-		AudioSource.PlayClipAtPoint (creature, transform.position, creatureVolume);
 		wind.windMain = 7f;
 		StartCoroutine (FloodLights ());
 	
 	}
 
 	private IEnumerator FloodLights (){
+		AudioSource.PlayClipAtPoint (creature, transform.position, creatureVolume);
+		yield return new WaitForSeconds (2f);
 		animator.SetTrigger ("LightScramble");
 		yield return new WaitForSeconds (1f);
 		lightGuideR.SetActive (true);
@@ -38,8 +39,4 @@ public class PreWindTrigger5 : MonoBehaviour {
 		Destroy (this.gameObject);
 	}
 
-	// Update is called once per frame
-	void Update () {
-
-	}
 }
