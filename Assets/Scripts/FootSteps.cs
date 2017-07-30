@@ -5,13 +5,11 @@ using UnityEngine;
 public class FootSteps : MonoBehaviour {
 
 	PlayerController pc;
-	Rigidbody rb;
 	AudioSource walking;
 
 	// Use this for initialization
 	void Start () {
 		pc = GetComponent<PlayerController>();
-		rb = GetComponent<Rigidbody> ();
 		walking = GetComponent<AudioSource> ();
 	}
 	

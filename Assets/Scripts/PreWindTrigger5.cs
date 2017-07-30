@@ -9,7 +9,6 @@ public class PreWindTrigger5 : MonoBehaviour {
 	WindZone wind;
 	public GameObject lightGuideR;
 	public GameObject lightGuideL;
-
 	public Animator animator;
 
 	// Use this for initialization
@@ -26,16 +25,18 @@ public class PreWindTrigger5 : MonoBehaviour {
 
 	private IEnumerator FloodLights (){
 		AudioSource.PlayClipAtPoint (creature, transform.position, creatureVolume);
-		yield return new WaitForSeconds (2f);
+		yield return new WaitForSeconds (1f);
 		animator.SetTrigger ("LightScramble");
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (0.5f);
 		lightGuideR.SetActive (true);
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (0.5f);
 		lightGuideL.SetActive (true);
+
 	}
 
 
 	void OntriggerExit(){
+		
 		Destroy (this.gameObject);
 	}
 

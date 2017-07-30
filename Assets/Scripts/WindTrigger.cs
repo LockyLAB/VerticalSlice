@@ -14,6 +14,7 @@ public class WindTrigger : MonoBehaviour {
 	public float breathingVolume = 1f;
 	public float creatureRoarVolume = 1f;
 	public GameObject musicBoxWind;
+	public GameObject musicBoxDark;
 //	public bool isWindy = false;
 //	public int counter;
 
@@ -33,9 +34,11 @@ public class WindTrigger : MonoBehaviour {
 
 	private IEnumerator Roar(){
 		AudioSource.PlayClipAtPoint (creatureRoar, transform.position, creatureRoarVolume);
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (1.5f);
 		AudioSource.PlayClipAtPoint (heavyBreathing, transform.position, breathingVolume);
-		yield return new WaitForSeconds (1f);
+		yield return new WaitForSeconds (0.5f);
+		musicBoxDark.SetActive (true);
+		yield return new WaitForSeconds (0.5f);
 		musicBoxWind.SetActive (true);
 		yield return new WaitForSeconds (0.5f);
 		wind.windMain = 8f;

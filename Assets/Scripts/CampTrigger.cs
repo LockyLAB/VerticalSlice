@@ -45,8 +45,9 @@ public class CampTrigger : MonoBehaviour {
 
 
 	private IEnumerator Trees(){
-		animator.SetTrigger("TreeFalling");
-		yield return new WaitForSeconds (secondsToWaitAnimations);
+//		animator.SetTrigger("TreeFalling");
+//		yield return new WaitForSeconds (secondsToWaitAnimations);
+		yield return new WaitForSeconds (1.5f);
 		animator2.SetTrigger ("TreeFalling2");
 		yield return new WaitForSeconds (secondsToWaitAnimations);
 		animator3.SetTrigger ("TreeFalling3");
@@ -58,21 +59,23 @@ public class CampTrigger : MonoBehaviour {
 	}
 
 	private IEnumerator Sounds(){
-		yield return new WaitForSeconds (1.5f);
+//		yield return new WaitForSeconds (1.5f);
 		AudioSource.PlayClipAtPoint (creatureGrowl, transform.position, creatureGrowlVolume);
 		yield return new WaitForSeconds (secondsToWaitCreatureSounds);
 		AudioSource.PlayClipAtPoint (heavyBreathingQuick, transform.position, heavyBreathingQuickVolume);
 	}
 
 	private IEnumerator TreeFallingSounds(){
+//		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
+//		yield return new WaitForSeconds (secondsToWaitTreeSounds);
+		yield return new WaitForSeconds (1.5f);
 		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
 		yield return new WaitForSeconds (secondsToWaitTreeSounds);
 		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
 		yield return new WaitForSeconds (secondsToWaitTreeSounds);
 		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
-		yield return new WaitForSeconds (secondsToWaitTreeSounds);
-		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
-		yield return new WaitForSeconds (secondsToWaitTreeSounds);
+		yield return new WaitForSeconds (2f);
+		Destroy (this.gameObject);
 //		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
 //		yield return new WaitForSeconds (secondsToWaitTreeSounds);
 
