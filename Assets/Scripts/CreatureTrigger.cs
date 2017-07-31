@@ -13,6 +13,16 @@ public class CreatureTrigger : MonoBehaviour {
 	public GameObject musicBoxBacking;
 	public ParticleSystem dustCloud;
 
+//	public CameraShake cameraParent;
+//	public float shakeDuration = 1f;
+//	public float shakeMagnitude = 1f;
+
+//	public GameObject Cam;
+//	private Vector3 _originalPos;
+//	public float shakeDuration = 1f;
+//	public float shakeAmount = 1f;
+
+
 	PlayerController pc;
 
 	public Animator animator;
@@ -20,6 +30,8 @@ public class CreatureTrigger : MonoBehaviour {
 
 	void Start (){
 		pc = GameObject.FindWithTag ("Player").GetComponent<PlayerController>();
+//		_originalPos = Cam.transform.position;
+
 	}
 
 	void OnTriggerEnter(){
@@ -30,7 +42,8 @@ public class CreatureTrigger : MonoBehaviour {
 		animator.SetTrigger ("PathTreeFalling");
 		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolumeLevel);
 		StartCoroutine (Dust ());
-		pc.walkSpeed = 0.08f;
+//		cameraParent.Shake (shakeDuration, shakeMagnitude);
+		pc.walkSpeed = 0.07f;
 
 	}
 
@@ -44,15 +57,25 @@ public class CreatureTrigger : MonoBehaviour {
 	}
 
 	private IEnumerator Dust(){
-		
-		//yield return new WaitForSeconds (0.1f);
-
 		yield return new WaitForSeconds (1.5f);
 		dustCloud.Play ();
 		musicBoxBacking.SetActive (false);
-		//yield return new WaitForSeconds (2f);
 		Destroy (this.gameObject);
 	}
 
+//	public void Shake (float shakeDuration, float shakeAmount) {
+//		this.StopAllCoroutines();
+//		this.StartCoroutine(cShake(shakeDuration, shakeAmount));
+//	}
+//
+//	public IEnumerator cShake (float shakeDuration, float amount) {
+//		float endTime = Time.time + shakeDuration;
+//		while (Time.time < endTime) {
+//			Cam.transform.localPosition = _originalPos + Random.insideUnitSphere * shakeAmount;
+//			shakeDuration -= Time.deltaTime;
+//			yield return null;
+//		}
+//		Cam.transform.localPosition = _originalPos;
+//	}
 
 }

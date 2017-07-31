@@ -13,22 +13,30 @@ public class CampTrigger : MonoBehaviour {
 	public float heavyBreathingQuickVolume = 1f;
 	public float treeFallingVolume = 1f;
 
-	public float secondsToWaitTreeSounds = 1.5f;
-	public float secondsToWaitAnimations = 1f;
-	public float secondsToWaitCreatureSounds = 2f;
+	public float secondsBetweenSounds = 1.5f;
+	public float secondsBetweenAnimations = 1f;
+	public float secondsBetweenCreatureSounds = 2f;
+	public float secondsBetweenDust2 = 1f;
+	public float secondsBetweenDust3 = 1f;
+	public float secondsBetweenDust4 = 1f;
 
-	public Animator animator;
+
+
 	public Animator animator2;
 	public Animator animator3;
 	public Animator animator4;
+	public Animator animator5;
 	//public Animator animator5;*/
+
+	public ParticleSystem dustCloud2;
+	public ParticleSystem dustCloud3;
+	public ParticleSystem dustCloud4;
 
 	public GameObject birds;
 
 
 	// Use this for initialization
 	void Start () {
-		animator = GetComponent<Animator> ();
 		pc = GameObject.FindWithTag ("Player").GetComponent<PlayerController>();
 	}
 		
@@ -39,6 +47,7 @@ public class CampTrigger : MonoBehaviour {
 		pc.isWalking = false;
 		StartCoroutine (Sounds ());
 		StartCoroutine (TreeFallingSounds ());
+		StartCoroutine (DustClouds ());
 		birds.SetActive (false);
 
 	}
@@ -49,10 +58,14 @@ public class CampTrigger : MonoBehaviour {
 //		yield return new WaitForSeconds (secondsToWaitAnimations);
 		yield return new WaitForSeconds (1.5f);
 		animator2.SetTrigger ("TreeFalling2");
-		yield return new WaitForSeconds (secondsToWaitAnimations);
+		yield return new WaitForSeconds (secondsBetweenAnimations);
 		animator3.SetTrigger ("TreeFalling3");
-		yield return new WaitForSeconds (secondsToWaitAnimations);
+		yield return new WaitForSeconds (secondsBetweenAnimations);
 		animator4.SetTrigger ("TreeFalling4");
+		yield return new WaitForSeconds (1F);
+		animator5.SetTrigger ("FadeOut");
+
+
 //		yield return new WaitForSeconds (secondsToWaitAnimations);
 //		animator5.SetTrigger ("TreeFalling5");
 
@@ -61,23 +74,32 @@ public class CampTrigger : MonoBehaviour {
 	private IEnumerator Sounds(){
 //		yield return new WaitForSeconds (1.5f);
 		AudioSource.PlayClipAtPoint (creatureGrowl, transform.position, creatureGrowlVolume);
-		yield return new WaitForSeconds (secondsToWaitCreatureSounds);
+		yield return new WaitForSeconds (secondsBetweenCreatureSounds);
 		AudioSource.PlayClipAtPoint (heavyBreathingQuick, transform.position, heavyBreathingQuickVolume);
 	}
 
 	private IEnumerator TreeFallingSounds(){
 //		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
 //		yield return new WaitForSeconds (secondsToWaitTreeSounds);
-		yield return new WaitForSeconds (1.5f);
+		yield return new WaitForSeconds (1.3f);
 		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
-		yield return new WaitForSeconds (secondsToWaitTreeSounds);
+		yield return new WaitForSeconds (secondsBetweenSounds);
 		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
-		yield return new WaitForSeconds (secondsToWaitTreeSounds);
+		yield return new WaitForSeconds (secondsBetweenSounds);
 		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
-		yield return new WaitForSeconds (2f);
-		Destroy (this.gameObject);
+		yield return new WaitForSeconds (5f);
+		Application.Quit ();
 //		AudioSource.PlayClipAtPoint (treeFalling, transform.position, treeFallingVolume);
 //		yield return new WaitForSeconds (secondsToWaitTreeSounds);
 
+	}
+
+	private IEnumerator DustClouds (){
+		yield return new WaitForSeconds (secondsBetweenDust2);
+		dustCloud2.Play ();
+		yield return new WaitForSeconds (secondsBetweenDust3);
+		dustCloud3.Play ();
+		yield return new WaitForSeconds (secondsBetweenDust4);
+		dustCloud4.Play ();
 	}
 }

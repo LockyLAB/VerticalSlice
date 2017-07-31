@@ -39,11 +39,12 @@ public class WindTrigger : MonoBehaviour {
 		yield return new WaitForSeconds (0.5f);
 		musicBoxDark.SetActive (true);
 		yield return new WaitForSeconds (0.5f);
+		pc.walkSpeed = 0.15f;
+		yield return new WaitForSeconds (0.5f);
 		musicBoxWind.SetActive (true);
 		yield return new WaitForSeconds (0.5f);
 		wind.windMain = 8f;
-		yield return new WaitForSeconds (0.5f);
-		pc.walkSpeed = 0.18f;
+
 
 
 	}
